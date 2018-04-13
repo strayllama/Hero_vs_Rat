@@ -7,7 +7,6 @@ describe('Hero', function () {
 
   beforeEach(function() {
     hero = new Hero('Conan', 'Dried Goat');
-
   });
 
   it('should have name', function() {

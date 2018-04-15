@@ -2,6 +2,7 @@ const assert = require('assert');
 const Hero = require('../models/hero.js');
 const Food = require('../models/food.js')
 const Task = require('../models/task.js')
+const Rat = require('../models/rat.js')
 
 describe('Hero', function () {
 
@@ -12,6 +13,7 @@ describe('Hero', function () {
   let task4;
   let food1;
   let food2;
+  let rat1;
 
   beforeEach(function() {
     hero = new Hero('Conan', 'Dried Goat');
@@ -25,7 +27,7 @@ describe('Hero', function () {
     hero.acceptTask(task2);
     hero.acceptTask(task3);
     hero.acceptTask(task4);
-  //  hero.carryOutTask(task2);
+    rat1 = new Rat();
   });
 
   it('should have name', function() {
@@ -102,6 +104,13 @@ describe('Hero', function () {
       console.log("\n");
       console.log("List ONLY UNcompleated tasks:");
       hero.listUncompletedTasks();
+    });
+
+    it('should lose health when eating poisonous food', function () {
+      assert.strictEqual(hero.health, 100);
+      rat1.touchFood(food1);
+      hero.eat(food1);
+      assert.strictEqual(hero.health, 90);
     });
 
   }); // end describe

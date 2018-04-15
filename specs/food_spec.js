@@ -17,4 +17,9 @@ describe('Food', function () {
     assert.strictEqual(food.replenishValue, 10);
   });
 
+  it('should be able to get poisonous', function () {
+    food.ratTouches();
+    assert.strictEqual(food.poisonousWhenMinus1, -1);
+  });
+
 }); // end describe

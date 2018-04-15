@@ -42,12 +42,11 @@ Hero.prototype.listUncompletedTasks = function () {
   });
 };
 
-
 Hero.prototype.eat = function (food) {
   if (food.name === this.favFood) {
-    this.health += food.replenishValue * 1.5;
+    this.health += food.replenishValue * 1.5 * food.poisonousWhenMinus1;
   } else {
-    this.health += food.replenishValue;
+    this.health += food.replenishValue * food.poisonousWhenMinus1;
   };
 };
 
@@ -80,7 +79,5 @@ Hero.prototype.listTasks = function () {
     console.log(task.fullString());
   });
 }
-
-// A hero should be able to view tasks that are marked as completed or incomplete.
 
 module.exports = Hero;
